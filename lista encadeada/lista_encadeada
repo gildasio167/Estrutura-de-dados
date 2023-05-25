@@ -1,0 +1,10 @@
+Algoritmo: BuscarTamanhoLista(v)
+Entrada: nó Inicial v
+Saida: retornar a quantidade de nós da lista
+1 - cont = 0;
+2 - enquanto v->prox é diferente de null faça
+3 - 	cont++
+4 -	v = v->prox
+5 - retorne cont 
+
+Complexidade: O(n)

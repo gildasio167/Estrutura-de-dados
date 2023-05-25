@@ -1,0 +1,16 @@
+Algoritmo: RetornarListaConcatenada(L1, L2)
+Entrada: L1, L2
+Saida: Lista Concatenada
+1- se L1 == NULL
+2-     se L2 != NULL
+3-	  Retorne L2
+4-     senão Retorne NULL
+5- p = L1
+6-
+7- Enquanto p é diferente de NULL faça
+8-
+9- 	p = p->prox
+10- p = L1
+
+Não precisa percorrer a lista 2 e usar a lista 1 para concatenar, sem criar uma nova lista
+
