@@ -1,0 +1,24 @@
+Apresente o pseudocódigo de uma função
+ ContarFolhas(r) que recebe como entrada o nó
+raiz r de uma BST e retorna a quantidade de folhas presentes nesta BST. Qual a complexidade
+desta função?
+
+\begin{itemize}
+	\item \textbf{Resposta:}
+	
+	\begin{itemize}
+		\item \textbf{Algoritmo:} ContarFolhas(\textbf{NO*} arv)
+		\item \textbf{Entrada:} NO raiz da arvore
+		\item \textbf{Saída:}
+		Quantidades de folhas na arvore
+		\item \textbf{Complexidade:} O(n)
+		
+		\begin{enumerate}[1--]
+			\item \textbf{se} arv == NULL \textbf{então}
+			\item $|$\quad return 0
+			\item \textbf{se} arv $\rightarrow$ esq == NULL \&\& arv  $\rightarrow$ dir == NULL \textbf{então}
+			\item $|$ \quad return 1
+			\item return \textbf{ContarFolhas}(arv$\rightarrow$esq) + \textbf{ContarFolhas}(arv$\rightarrow$dir)
+		\end{enumerate}
+	\end{itemize}
+\end{itemize}

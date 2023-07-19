@@ -1,0 +1,88 @@
+Apresente o pseudocódigo de uma função 
+RemoveTodos(r, x) que recebe como entrada o nó
+raiz r de uma BST e um valor x e remove todos os nós desta BST que tem chave igual a x.
+Qual a complexidade desta função?
+
+\begin{itemize}
+	\item \textbf{Resposta:}
+	
+	\begin{itemize}
+		\item \textbf{Algoritmo:} RemoveTodos(\textbf{NO*} arv, int x)
+		\item \textbf{Entrada:} NO raiz da arvore e x que é o valor que deve ser removido todos os nós com chave x.
+		\item \textbf{Saída:}
+		Arvore com os elementos com chave x removidos.
+		\item \textbf{Complexidade:} O(h) e no pior caso O(n+h)
+		
+		\begin{enumerate}[1--]
+			\item \textbf{NO*} no = \textbf{buscar}(arv, x)
+			\item \textbf{se} no == NULL \textbf{então}
+			\item $|$ \quad return
+			\item \textbf{se} no $\rightarrow$ esq == NULL \&\& no $\rightarrow$ dir == NULL \textbf{então}
+			\item $|$ \quad \textbf{se} no $\rightarrow$ pai == NULL \textbf{então}
+			\item $|$ \quad $|$ \quad \textbf{free}(no)
+			\item $|$ \quad $|$ \quad return
+			\item $|$ \quad \textbf{se} no $\rightarrow$ pai $\rightarrow$ esq == no \textbf{então}
+			\item $|$ \quad $|$ \quad no $\rightarrow$ pai $\rightarrow$ esq = NULL
+			\item $|$ \quad \textbf{senão}
+			\item $|$ \quad $|$ \quad no $\rightarrow$ pai $\rightarrow$ dir = NULL
+			\item $|$ \quad \textbf{free}(no)
+			\item $|$ \quad return
+			\item \textbf{se} no $\rightarrow$ esq == NULL \textbf{então}
+			\item $|$ \quad \textbf{se} no $\rightarrow$ pai == NULL \textbf{então}
+			\item $|$ \quad $|$ \quad arv = no $\rightarrow$ dir
+			\item $|$ \quad $|$
+			\quad \textbf{free}(no)
+			\item $|$ \quad $|$
+			\quad return
+			\item $|$ \quad \textbf{se} no $\rightarrow$ pai $\rightarrow$ esq == no \textbf{então}
+			\item $|$ 
+			\quad $|$
+			\quad no $\rightarrow$ pai $\rightarrow$ esq = no $\rightarrow$ dir
+			\item $|$
+			\quad \textbf{senão}
+			\item $|$
+			\quad $|$ \quad no $\rightarrow$ pai $\rightarrow$ dir = no $\rightarrow$ dir
+			\item $|$
+			\quad \textbf{free}(no)
+			\item $|$
+			\quad return
+			\item \textbf{se} no $\rightarrow$ dir == NULL \textbf{então}
+			\item $|$
+			\quad \textbf{se} no $\rightarrow$ pai == NULL \textbf{então}
+			\item $|$
+			\quad $|$ 
+			\quad arv = no $\rightarrow$ esq
+			\item $|$
+			\quad $|$
+			\quad \textbf{free}(no)
+			\item $|$
+			\quad $|$
+			\quad return
+			\item $|$
+			\quad \textbf{se} no $\rightarrow$ pai $\rightarrow$ esq == no \textbf{então}
+			\item $|$
+			\quad $|$
+			\quad no $\rightarrow$ pai $\rightarrow$ esq = no $\rightarrow$ esq
+			\item $|$
+			\quad \textbf{senão}
+			\item $|$
+			\quad $|$
+			\quad no $\rightarrow$ pai $\rightarrow$ dir = no $\rightarrow$ esq
+			\item \textbf{NO*} aux = no $\rightarrow$ esq
+			\item \textbf{enquanto} aux $\rightarrow$ dir $\neq$ NULL \textbf{então}
+			\item $|$ 
+			\quad aux = aux $\rightarrow$ dir
+			\item no $\rightarrow$ chave = aux $\rightarrow$ chave
+			\item \textbf{se} aux $\rightarrow$ pai $\rightarrow$ esq == aux \textbf{então}
+			\item $|$
+			\quad aux $\rightarrow$ pai $\rightarrow$ esq = aux $\rightarrow$ esq
+			\item \textbf{senão}
+			\item $|$
+			\quad aux $\rightarrow$ pai $\rightarrow$ dir = aux $\rightarrow$ esq
+			\item \textbf{free}(aux)
+			\item return
+			
+			
+		\end{enumerate}
+	\end{itemize}
+\end{itemize}

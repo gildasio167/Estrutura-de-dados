@@ -1,0 +1,59 @@
+Em classe, vimos uma função para preencher os campos alt (altura) de cada um dos nós de
+uma BST. Porém, assim como no caso do campo p (pai), o campo alt pode ser atualizado no
+momento da inserção. Apresente um pseudocódigo da função de inserir que atualiza os campos
+alt corretamente no momento da inserção.
+
+\begin{itemize}
+	\item \textbf{Resposta:}
+	
+	\begin{itemize}
+		\item \textbf{Algoritmo:} Inserir\_com\_altura(\textbf{NO* arv}, int x)
+		\item \textbf{Entrada:} NO raiz da arvore e x que é o valor a ser inserido
+		\item \textbf{Saída:}
+		arvore com o valor x inserido e alterado a altura dos nós caso necessário
+		\item \textbf{Complexidade:} O(n+h)
+		
+	\end{itemize}
+	
+	 
+	 
+	 \begin{enumerate}[1--]
+	 	\item \textbf{se} arv == NULL \textbf{então}
+	 	\item $|$ \quad
+	 	\textbf{NO*} novo = (\textbf{NO*}) malloc(sizeof(NO))
+	 	\item $|$ \quad
+	 	novo $\rightarrow$ chave = x
+	 	\item $|$ \quad
+	 	novo $\rightarrow$ esq = NULL
+	 	\item $|$ \quad
+	 	novo $\rightarrow$ dir = NULL
+	 	\item $|$ \quad
+	 	novo $\rightarrow$ pai = NULL
+	 	\item $|$ \quad
+	 	novo $\rightarrow$ altura = 1
+	 	\item $|$ \quad
+	 	return novo
+	 	\item \textbf{se} x $<$ arv $\rightarrow$ chave \textbf{então}
+	 	\item $|$ \quad
+	 	arv $\rightarrow$ esq = \textbf{inserir\_com\_altura}(arv$\rightarrow$ esq, x)
+	 	\item $|$ \quad
+	 	arv $\rightarrow$ esq $\rightarrow$ pai = arv
+	 	\item \textbf{senão se} x $>$ arv $\rightarrow$ chave \textbf{então}
+	 	\item $|$ \quad
+	 	arv $\rightarrow$ dir = \textbf{inserir\_com\_altura}(arv $\rightarrow$ dir, x)
+	 	\item $|$ \quad
+	 	arv $\rightarrow$ dir $\rightarrow$ pai = arv
+	 	\item \textbf{senão}
+	 	\item $|$ \quad
+	 	return arv
+	 	\item \textbf{alterarAltura}(arv)
+	 	\item return arv
+	 \end{enumerate}
+	 
+	 void alterarAltura(\textbf{NO*} arv)\{\\
+	 \text{\qquad int esqAltura = Altura(arv $\rightarrow$ esq)}\\
+	 \text{\qquad int dirAltura = Altura(arv $\rightarrow$ dir)}\\
+	 \text{\qquad arv $\rightarrow$ altura = 1 + \textbf{max}(esqAltura, dirAltura)}\\
+	 \}
+	 
+\end{itemize}

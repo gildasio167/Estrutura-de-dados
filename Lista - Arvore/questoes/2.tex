@@ -1,0 +1,29 @@
+Apresente o pseudocódigo de uma função ContarNos(r) que recebe como entrada o nó raiz
+r de uma BST e retorna a quantidade de nós nesta BST que tem pelo menos uma sub-árvore
+vazia. Qual a complexidade desta função?
+
+\begin{itemize}
+	\item \textbf{Resposta:}
+	
+	\begin{itemize}
+		\item \textbf{Algoritmo:} ContarNos\_SubArvoreVazia(\textbf{NO*} arv)
+		\item \textbf{Entrada:} NO raiz da arvore
+		\item \textbf{Saída:}
+		Quantidade de nós com sub arvove vazia
+		\item \textbf{Complexidade:} O(n)
+		
+		\begin{enumerate}[1--]
+			
+			\item \textbf{se} arv == NULL \textbf{então}
+			\item $|$\quad return 0
+			\item int result = 0
+			\item \textbf{se} arv $\rightarrow$ esq == NULL $||$ arv $\rightarrow$ dir == NULL \textbf{então}
+			\item $|$ \quad result = 1
+			\item result += \textbf{ContarNos\_SubArvoreVazia}(arv $\rightarrow$ esq)
+			\item result += \textbf{ContarNos\_SubArvoreVazia}(arv $\rightarrow$ dir)
+			\item return result
+			
+			
+		\end{enumerate}
+	\end{itemize}
+\end{itemize}

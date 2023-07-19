@@ -1,0 +1,143 @@
+Q1 - Função: ContarFolhas(NO* raiz);
+
+int ContarFolhas(NO* arv){
+    if(arv == NULL) {
+        return 0;
+    }
+    if(arv->esq == NULL && arv->dir == NULL) {
+        return 1;
+    }
+    return ContarFolhas(arv->esq) + ContarFolhas(arv->dir);
+};
+
+Q2 - Função: ContarNos_SubArvoreVazia(NO* raiz);
+
+int ContarNos_SubArvoreVazia(NO* arv){
+    if(arv == NULL) {
+        return 0;
+    }
+
+    int result = 0;
+
+    if(arv->esq == NULL || arv->dir == NULL) {
+        result = 1;
+    }
+
+    result += ContarNos_SubArvoreVazia(arv->esq);
+    result += ContarNos_SubArvoreVazia(arv->dir);
+
+    return result;
+
+};
+
+Q3 - Função: RemoveTodos(NO* raiz, int x);
+
+void RemoveTodos(NO* arv, int x){
+    NO* no = buscar(arv, x);
+    if(no == NULL) {
+        return;
+    }
+    if(no->esq == NULL && no->dir == NULL) {
+        if(no->pai == NULL) {
+            free(no);
+            return;
+        }
+        if(no->pai->esq == no) {
+            no->pai->esq = NULL;
+        }
+        else {
+            no->pai->dir = NULL;
+        }
+        free(no);
+        return;
+    }
+    if(no->esq == NULL) {
+        if(no->pai == NULL) {
+            arv = no->dir;
+            free(no);
+            return;
+        }
+        if(no->pai->esq == no) {
+            no->pai->esq = no->dir;
+        }
+        else {
+            no->pai->dir = no->dir;
+        }
+        free(no);
+        return;
+    }
+    if(no->dir == NULL) {
+        if(no->pai == NULL) {
+            arv = no->esq;
+            free(no);
+            return;
+        }
+        if(no->pai->esq == no) {
+            no->pai->esq = no->esq;
+        }
+        else {
+            no->pai->dir = no->esq;
+        }
+        free(no);
+        return;
+    }
+    NO* aux = no->esq;
+    while(aux->dir != NULL) {
+        aux = aux->dir;
+    }
+    no->chave = aux->chave;
+    if(aux->pai->esq == aux) {
+        aux->pai->esq = aux->esq;
+    }
+    else {
+        aux->pai->dir = aux->esq;
+    }
+    free(aux);
+    return;
+};
+
+Q4 - Função: Inserir_com_altura(NO* raiz, int x);
+
+void alterarAltura(NO* arv){
+    int esqAltura = Altura(arv->esq);
+    int dirAltura = Altura(arv->dir);
+    arv->altura = 1 + max(esqAltura, dirAltura);
+}
+
+NO* inserir_com_altura(NO* arv, int x){
+    if (arv == NULL) {
+        NO* novo = (NO*) malloc(sizeof(NO));
+        novo->chave = x;
+        novo->esq = NULL;
+        novo->dir = NULL;
+        novo->pai = NULL;
+        novo->altura = 1;
+        return novo;
+    }
+
+    if (x < arv->chave){
+        arv->esq = inserir_com_altura(arv->esq, x);
+        arv->esq->pai = arv;
+    }
+    else if (x > arv->chave){
+        arv->dir = inserir_com_altura(arv->dir, x);
+        arv->dir->pai = arv;
+    }
+    else {
+        return arv;
+    }
+
+    alterarAltura(arv);
+
+    return arv;
+};
+
+Q5 - Função: Imprimir_interativo(NO* raiz);
+
+void imprimir_interativo(NO* arv){
+    NO* aux = minimo(arv);
+    while(aux != NULL) {
+        cout << aux->chave << endl;
+        aux = sucessor(aux);
+    }
+}
